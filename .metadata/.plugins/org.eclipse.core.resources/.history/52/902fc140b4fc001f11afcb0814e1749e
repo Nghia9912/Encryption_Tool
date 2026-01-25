@@ -1,0 +1,24 @@
+public class MHDC {
+        public static String encrypt(String txt, int shift) {
+            StringBuilder encryptedText = new StringBuilder();
+
+            for (char c : txt.toCharArray()) {
+                if (Character.isLetter(c)) {
+                    char base = Character.isUpperCase(c) ? 'A':'a';
+                    encryptedText.append((char) ((c-base+shift)%26+base));
+                } else {
+                    encryptedText.append(c);
+                }
+            }
+            return encryptedText.toString();
+        }
+
+        public static void main(String[] args) {
+            String text = "HELLO WORLD";
+            int shift = 3;
+
+            String encrypted = encrypt(text, shift);
+            System.out.println(encrypted);
+        }
+    }
+
